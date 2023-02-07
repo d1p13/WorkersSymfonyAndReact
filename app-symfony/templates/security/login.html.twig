@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <p class="fs-3 text-center margin-top20px">Please Sign In</p>
+        <form method="post">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+            <fieldset>
+                <label for="username" class="form-label">Login</label>
+                <input type="text" name="username" id="username" class="form-control" placeholder="Enter a login" >
+
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Enter a password" autocomplete="new-password">
+
+                <input type="hidden" name="_csrf_token"value="{{ csrf_token('authenticate') }}">
+                <button type="submit" class="btn btn-primary margin-top20px">Sign In</button>
+            </fieldset>
+        </form>        
+    </div>
+
+{% endblock %}

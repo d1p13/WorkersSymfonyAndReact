@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <p class="fs-3 text-center margin-top20px">Please Registration</p>
+        {{ form_start(registrationForm) }}            
+            {{ form_row(registrationForm.firstname, {label: 'Name'}) }}
+
+            {{ form_row(registrationForm.secondname, {label: 'Secondname'}) }}
+
+            {{ form_row(registrationForm.username, {label: 'Login'}) }}
+
+            {{ form_row(registrationForm.plainPassword, {label: 'Password'}) }}
+
+            <button type="submit" class="btn btn-primary margin-top20px">Registration</button>
+        {{ form_end(registrationForm) }}
+    </div>
+   
+{% endblock %}

@@ -1,0 +1,59 @@
+/*Обнуляющий стиль*/
+*{padding: 0; margin: 0; border: 0; font-family: 'Montserrat', sans-serif; font-weight: 500 !important;}
+*,*:before,*:after{-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+nav, footer, header, aside{display: block;}
+html, body{height: 100%; width: 100%; font-size: 100%; line-height: 1; font-size: 16px !important;  -ms-text-size-adjust: 100%; -moz-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;}
+input, button, textarea{font-family: inherit;}
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding: 0; border: 0;}
+a, a:visited{text-decoration: none !important;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+h1,h2,h3,h4,h5,h6{font-size: inherit;}
+/*=====================================================================================================*/
+
+.sign_in{
+	margin-right: 10px;
+}
+.username{
+	margin: 0 10px;
+	font-size: 18px;
+	opacity: 0.9;
+}
+
+.text-center{
+	opacity: 0.9;
+}
+
+.itsme{
+	border: 3px lightgreen solid;
+}
+
+.show_edit{
+	padding: 0 10px !important;
+	opacity: 0.9;
+}
+
+.align{
+	align-self: end !important;
+}
+.btn-group div:nth-child(2){
+	margin: 0 10px !important;
+}
+
+.form-label{
+	margin-top: 20px !important;
+}
+
+.margin-top20px{
+	margin-top: 20px;
+}
+
+.table th a, .table th{
+	color: black !important;
+	font-weight: 600 !important;
+}

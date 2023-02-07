@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <p class="fs-3 text-center margin-top20px">User</p>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ user.id }}</td>
+                </tr>
+                <tr>
+                    <th>Login</th>
+                    <td>{{ user.username }}</td>
+                </tr>
+                <tr>
+                    <th>FirstName</th>
+                    <td>{{ user.firstName }}</td>
+                </tr>
+                <tr>
+                    <th>SecondName</th>
+                    <td>{{ user.secondName }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <div>
+                <a href="{{ path('app_user_index') }}" class="btn btn-outline-dark show_edit"><- back</a>
+            </div>
+            <div>
+                {% if app.user %}
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-outline-dark show_edit">edit</a> 
+                {% endif %}  
+            </div>
+            <div>
+                {% if app.user %}
+                    {% if app.user.id != user.id %}
+                        {{ include('user/_delete_form.html.twig') }}
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>   
+{% endblock %}

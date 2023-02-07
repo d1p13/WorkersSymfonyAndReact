@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New User{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <p class="fs-3 text-center margin-top20px">Create new User</p>
+        
+        {{ include('user/_form.html.twig') }}
+
+        <a href="{{ path('app_user_index') }}" class="btn btn-outline-dark show_edit"><- back</a>  
+    </div>
+    
+{% endblock %}

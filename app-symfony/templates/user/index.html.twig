@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All Workers{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <p class="fs-3 text-center margin-top20px">All Workers</p>
+
+       {#  <form method="GET" name="sort">
+            <select class="form-select" name="select_sort">
+                {% if select_sort=='id' %}<option selected value="id">Id</option> {% else %} <option value="id">Id</option> {% endif %}         
+                
+                {% if select_sort=='firstName' %}<option selected value="firstName">Name</option> {% else %} <option value="firstName">Name</option>  {% endif %}
+
+                {% if select_sort=='secondName' %}<option selected value="secondName">Secondname</option> {% else %} <option value="secondName">Secondname</option> {% endif %}
+
+                {% if select_sort=='username' %}<option selected value="username">Login</option> {% else %} <option value="username">Login</option>  {% endif %}  
+            </select>
+            
+            <div class="form-check">
+                {% if sort_radio == 'asc' %}
+                    <input type="radio" id="asc" name="sort_radio" value="asc" class="form-check-input" checked>
+                {% else %}
+                    <input type="radio" id="asc" name="sort_radio" value="asc" class="form-check-input">
+                {% endif %}
+                <label for="asc" class="form-check-label">По возрастанию</label>
+            </div>
+            
+            <div class="form-check">
+                {% if sort_radio == 'desc' %}
+                    <input type="radio" id="desc" name="sort_radio" value="desc" class="form-check-input" checked>
+                {% else %}
+                    <input type="radio" id="desc" name="sort_radio" value="desc" class="form-check-input">
+                {% endif %}
+                <label for="desc" class="form-check-label">По убыванию</label>
+            </div>
+
+            <button class="btn btn-primary">Найти</button>
+        </form> #}
+
+        <table class="table">
+            <thead>
+                <tr>
+                    {% if sort == 'asc' and field == 'id' %}
+                        <th><a href="?sort=desc&field=id">Id ▲</a></th>
+                    {% else %}
+                        <th><a href="?sort=asc&field=id">Id {% if field == 'id' %} ▼ {% endif %}</a></th>
+                    {% endif %}
+
+                    {% if sort == 'asc' and field == 'firstName' %}
+                        <th><a href="?sort=desc&field=firstName">Name ▲</a></th>
+                    {% else %}
+                        <th><a href="?sort=asc&field=firstName">Name {% if field == 'firstName' %} ▼ {% endif %}</a></th>
+                    {% endif %}
+
+                    {% if sort == 'asc' and field == 'secondName' %}
+                        <th><a href="?sort=desc&field=secondName">SecondName ▲</a></th>
+                    {% else %}
+                        <th><a href="?sort=asc&field=secondName">SecondName {% if field == 'secondName' %} ▼ {% endif %}</a></th>
+                    {% endif %}
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in users%}
+                
+                {% if app.user %}
+                    {% if app.user.id == user.id %}
+                        <tr class="itsme">
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.firstName }}</td>
+                            <td>{{ user.secondName }}</td>
+                            <td>
+                                <a href="{{ path('app_user_show', {'id': user.id}) }}" class="btn btn-outline-dark show_edit">show</a>
+                                <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-outline-dark show_edit">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.firstName }}</td>
+                            <td>{{ user.secondName }}</td>
+                            <td>
+                                <a href="{{ path('app_user_show', {'id': user.id}) }}" class="btn btn-outline-dark show_edit">show</a>
+                                <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-outline-dark show_edit">edit</a>
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% else %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.firstName }}</td>
+                        <td>{{ user.secondName }}</td>
+                        <td>
+                            <a href="{{ path('app_user_show', {'id': user.id}) }}" class="btn btn-outline-dark show_edit">show</a>
+                            {% if app.user %}
+                                <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-outline-dark show_edit">edit</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endif %}
+            {% else %}
+                <tr>
+                    <td colspan="7">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_user_new') }}" class="btn btn-success show_edit margin-top20px">+ Create new</a>
+    </div>
+    
+{% endblock %}
