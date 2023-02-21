@@ -15,18 +15,46 @@ a, a:visited{text-decoration: none !important;}
 a:hover{text-decoration: none;}
 ul li{list-style: none;}
 img{vertical-align: top;}
-h1,h2,h3,h4,h5,h6{font-weight: inherit !important;}
 /*=====================================================================================================*/
 
 .mar-top-20{
     margin-top: 20px;
 }
 
-.form-label{
-	margin-top: 20px !important;
+.mar_0{
+	margin: 0 !important;
 }
 
 .table th a, .table th{
 	color: black !important;
 	font-weight: 600 !important;
+	text-align: center;
+}
+
+tr{
+	text-align: center;
+}
+
+.table{
+	margin: 20px 0 0 0 !important;
+}
+
+.create_worker_form{
+	display: block;
+	width: 450px;
+	margin: 0 auto !important;
+}
+
+.form-label{
+	margin-top: 20px !important;
+	width: inherit !important;
+}
+
+.form-control{
+	width: inherit !important;
+}
+
+.center{
+	display: block !important;
+	margin: 20px auto 0;
 }

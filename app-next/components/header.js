@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import nav from '../styles/nav-footer.module.css'
+import button from '../styles/button.module.css'
 
 const Header = () => {
     return (
@@ -12,9 +13,9 @@ const Header = () => {
                             <li><Link className="nav-link" href="/">Home</Link></li>
                             <li><Link className="nav-link" href="/all-workers">All Workers</Link></li>
                         </ul>
-                        <Link href="/" className="btn btn-outline-secondary">Logout</Link>
-                        <Link href="/auth/sign-in" className="btn btn-primary">Sign In</Link>
-                        <Link href="/auth/registration" className="btn btn-outline-secondary">Registration</Link>
+                        <Link href="/" className={`${button.font_weight} btn btn-outline-secondary`}>Logout</Link>
+                        <Link href="/auth/sign-in" className={`${button.font_weight} btn btn-primary`}>Sign In</Link>
+                        <Link href="/auth/registration" className={`${button.font_weight} btn btn-outline-secondary`}>Registration</Link>
                     </div>
                 </div>
             </nav>

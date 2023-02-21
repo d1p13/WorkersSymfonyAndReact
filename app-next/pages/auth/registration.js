@@ -1,27 +1,33 @@
 import Head from 'next/head'
 import Layout from '../../components/layout'
 import { useState } from 'react'
-
+import button from '../../styles/button.module.css'
+import { useRouter } from 'next/router'
 
 export default function Registration() {
-    const [name, setName] = useState('')
-    const [secondName, setSecondName] = useState('')
-    const [login, setLogin] = useState('')
-    const [password, setPassword] = useState('')
+    const router = useRouter();
 
-    const submitUser = async () => {
-        const response = await fetch('http://localhost:3001/api/users', {
-            method: 'POST', 
-            body: JSON.stringify({ 
-                firstName: name, 
-                secondName: secondName, 
-                username: login, 
-                password: password 
-            }),
-        });
-        const data = await response.json()
-        console.log(data)
-    }
+    const [name, setName] = useState()
+    const [secondName, setSecondName] = useState()
+    const [login, setLogin] = useState()
+    const [password, setPassword] = useState()
+
+    const submitUser = () => {
+        if(name && secondName && login && password)
+        {
+            const response = fetch('http://localhost:3001/api/users', {
+                method: 'POST', 
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    username: login, 
+                    password: password,
+                    firstName: name, 
+                    secondName: secondName
+                })
+            }) 
+            router.push('/auth/sign-in')
+        }
+    };
 
     return (
         <>
@@ -31,22 +37,22 @@ export default function Registration() {
             <Layout>
                 <p className="fs-3 text-center">Please Registration</p>
 
-                <from>
+                <from className='create_worker_form'>
                     <label className={"form-label"} htmlFor='Name'>Name</label>
-                    <input value={name} onChange={e => setName(e.target.value)} id='Name' type={"text"} className={"form-control"} placeholder='Enter a Name'/>
+                    <input onChange={e => setName(e.target.value)} id='Name' type={"text"} className={"form-control"} placeholder='Enter a Name'/>
 
                     <label className={"form-label"} htmlFor='SecondName'>SecondName</label>
-                    <input value={secondName} onChange={e => setSecondName(e.target.value)} id='SecondName' type={"text"} className={"form-control"} placeholder='Enter a Surname'/>
+                    <input onChange={e => setSecondName(e.target.value)} id='SecondName' type={"text"} className={"form-control"} placeholder='Enter a Surname'/>
 
                     <label className={"form-label"} htmlFor='Login'>Login</label>
-                    <input value={login} onChange={e => setLogin(e.target.value)} id='Login' type={"text"} className={"form-control"} placeholder='Enter a Login'/>
+                    <input onChange={e => setLogin(e.target.value)} id='Login' type={"text"} className={"form-control"} placeholder='Enter a Login'/>
 
                     <label className={"form-label"} htmlFor='Password'>Password</label>
-                    <input value={password} onChange={e => setPassword(e.target.value)} id='Password' type={"text"} className={"form-control"} placeholder='Enter a Password'/>
+                    <input onChange={e => setPassword(e.target.value)} id='Password' type={"text"} className={"form-control"} placeholder='Enter a Password'/>
 
-                    <button onClick={submitUser} type="submit" className="btn btn-primary mar-top-20">Registration</button>
+                    <button onClick={submitUser} type="submit" className={`${button.mar_0_auto} btn btn-primary`}>Registration</button>
                 </from>
-            </Layout>
+            </Layout>  
         </>
     )
 }

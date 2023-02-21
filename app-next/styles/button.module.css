@@ -1,3 +1,20 @@
-.show_edit{
+.padding10px{
 	padding: 0 10px !important;
+}
+
+.margin_between_10px{
+	margin-left: 10px;
+}
+
+.font_weight{
+	font-weight: 600 !important;
+}
+
+.width_150{
+	width: 150px;
+}
+
+.mar_0_auto{
+	display: block;
+	margin: 20px auto 0;
 }
